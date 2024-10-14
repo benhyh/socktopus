@@ -14,13 +14,15 @@
     "@react-three/fiber": "^8.17.10",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
+    "gltfjsx": "^6.5.2",
     "lucide-react": "^0.452.0",
     "next": "14.2.15",
     "react": "^18",
     "react-dom": "^18",
     "tailwind-merge": "^2.5.3",
     "tailwindcss-animate": "^1.0.7",
-    "three": "^0.169.0"
+    "three": "^0.169.0",
+    "three-stdlib": "^2.33.0"
   },
   "devDependencies": {
     "@types/node": "^20",

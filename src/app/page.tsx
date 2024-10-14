@@ -3,6 +3,8 @@
 import Image from "next/image";
 import { MaxWidthWrapper } from "./components/MaxWidthWrapper";
 import { BadgeCheck, Star } from "lucide-react";
+import Scene from "./components/Scene";
+
 export default function Home() {
   return (
     <div className="bg-slate-50 grainy-light">
@@ -30,7 +32,7 @@ export default function Home() {
                     <BadgeCheck className="h-5 w-5 shrink-0 text-purple-800" />
                     Grip like an octopus, soft like the sea
                   </li>
-                  <li className="flex gap-1.5 items-center text-left">
+                  <li className="flex gap-1.5 items-ceznter text-left">
                     <BadgeCheck className="h-5 w-5 shrink-0 text-purple-800 " />
                     Made to last, just like the legend of the deep
                   </li>
@@ -93,10 +95,8 @@ export default function Home() {
           </div>
 
           <div className="col-span lg:col-span-1 w-full flex justify-center px-8 sm:px-16 md:px-0 mt-32 lg:mx-0 lg:mt-20 h-fit">
-            <div className="relative md:max w-xl">
-              <div className="w-full h-full absolute right-0 top-[50%] transform -translate-y-[50%]">
-                {/* <Octopus /> */}
-              </div>
+            <div className="relative md:max">
+              <Scene />
             </div>
           </div>
         </MaxWidthWrapper>
