@@ -12,6 +12,16 @@ body {
   }
 }
 
+::selection {
+  background-color: #9333ea; /* Tailwind's purple-600 */
+  color: white;
+}
+
+::-moz-selection {
+  background-color: #9333ea; /* Tailwind's purple-600 */
+  color: white;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;

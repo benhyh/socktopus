@@ -32,7 +32,7 @@ export default function Home() {
                     <BadgeCheck className="h-5 w-5 shrink-0 text-purple-800" />
                     Grip like an octopus, soft like the sea
                   </li>
-                  <li className="flex gap-1.5 items-ceznter text-left">
+                  <li className="flex gap-1.5 items-center text-left">
                     <BadgeCheck className="h-5 w-5 shrink-0 text-purple-800 " />
                     Made to last, just like the legend of the deep
                   </li>
@@ -93,10 +93,21 @@ export default function Home() {
               </div>
             </div>
           </div>
-
-          <div className="col-span lg:col-span-1 w-full flex justify-center px-8 sm:px-16 md:px-0 mt-32 lg:mx-0 lg:mt-20 h-fit">
-            <div className="relative md:max">
-              <Scene />
+          <div className="col-span lg:col-span-1 w-full h-[80%] flex justify-center px-8 sm:px-16 md:px-0 mt-32 lg:mx-0 lg:mt-20">
+            <div className="relative w-[300px] h-[600px]">
+              {/* 3D Model Container */}
+              <div className="absolute inset-0 z-20 rounded-[2.75rem] overflow-hidden bg-purple-400/20">
+                <Scene />
+              </div>
+              {/* Transparent Frame */}
+              <div className="absolute inset-0 z-10 pointer-events-none">
+                <Image
+                  src="/phone.png"
+                  alt="phone"
+                  layout="fill"
+                  objectFit="contain"
+                />
+              </div>
             </div>
           </div>
         </MaxWidthWrapper>
