@@ -103,9 +103,9 @@ export default function Home() {
               <div className="absolute inset-0 z-10 pointer-events-none">
                 <Image
                   src="/phone.png"
-                  alt="phone"
-                  layout="fill"
-                  objectFit="contain"
+                  alt="phone frame for 3D model"
+                  width={300}
+                  height={600}
                 />
               </div>
             </div>
