@@ -4,8 +4,43 @@ import Image from "next/image";
 import { MaxWidthWrapper } from "./components/MaxWidthWrapper";
 import { BadgeCheck, Star } from "lucide-react";
 import Scene from "./components/Scene";
+import { Icons } from "./components/Icons";
+import { AnimatedTooltip } from "@/components/ui/AnimatedTip";
 
 export default function Home() {
+  const people = [
+    {
+      id: 1,
+      name: "Elon Musk",
+      designation: "X's final boss",
+      image: "/users/elon.png",
+    },
+    {
+      id: 2,
+      name: "Mark Zuckerberg",
+      designation: "Facebook Alien",
+      image: "/users/mark.png",
+    },
+    {
+      id: 3,
+      name: "Bill Gates",
+      designation: "Linux Enjoyer",
+      image: "/users/bill.png",
+    },
+    {
+      id: 4,
+      name: "Jeff Bezos",
+      designation: "Bald King",
+      image: "/users/jeff.png",
+    },
+    {
+      id: 5,
+      name: "Warren Buffet",
+      designation: "McDonald's enjoyer",
+      image: "/users/buffett.png",
+    },
+  ];
+
   return (
     <div className="bg-slate-50 grainy-light">
       <section>
@@ -39,45 +74,11 @@ export default function Home() {
                 </div>
               </ul>
 
-              <div className="mt-10 flex flex-col sm:flex-row sm:items-start gap-5">
+              <div className="mt-8 flex flex-col sm:flex-row sm:items-start gap-5 sm:ml-2">
                 <div className="flex -space-x-4">
-                  <Image
-                    className="inline-block h-10 w-10 rounded-full ring-2 ring-slate-100"
-                    src="/users/elon.png"
-                    alt="user image"
-                    width={50}
-                    height={50}
-                  />
-                  <Image
-                    className="inline-block h-10 w-10 rounded-full ring-2 ring-slate-100"
-                    src="/users/mark.png"
-                    alt="user image"
-                    width={50}
-                    height={50}
-                  />
-                  <Image
-                    className="inline-block h-10 w-10 rounded-full ring-2 ring-slate-100"
-                    src="/users/bill.png"
-                    alt="user image"
-                    width={50}
-                    height={50}
-                  />
-                  <Image
-                    className="inline-block h-10 w-10 rounded-full ring-2 ring-slate-100"
-                    src="/users/jeff.png"
-                    alt="user image"
-                    width={50}
-                    height={50}
-                  />
-                  <Image
-                    className="inline-block h-10 w-10 rounded-full ring-2 ring-slate-100"
-                    src="/users/buffett.png"
-                    alt="user image"
-                    width={50}
-                    height={50}
-                  />
+                  <AnimatedTooltip items={people} />
                 </div>
-                <div className="flex flex-col justify-between items-center sm:place-items-start ">
+                <div className="flex flex-col justify-between items-center sm:place-items-start mt-1">
                   <div className="flex gap-0.5">
                     <Star className="h-4 w-4 text-purple-600 fill-purple-600" />
                     <Star className="h-4 w-4 text-purple-600 fill-purple-600" />
@@ -111,6 +112,21 @@ export default function Home() {
             </div>
           </div>
         </MaxWidthWrapper>
+
+        <section className="bg-slate-100 py-24">
+          <MaxWidthWrapper className="flex flex-col items-center gap-16 sm:gap-32">
+            <div className="flex flex-col lg:flex-row items-center gap-5 sm:gap-6">
+              <h2 className="order-1 mt-2 tracking-tight text-center text-balance !leading-tight font-bold text-5xl md:text-6xl text-gray-900">
+                What our{" "}
+                <span className="relative px-2">
+                  customers{" "}
+                  <Icons.underline className="hidden sm:block pointer-events-none absolute inset-x-0 -bottom-6 text-purple-600" />
+                </span>{" "}
+                say
+              </h2>
+            </div>
+          </MaxWidthWrapper>
+        </section>
       </section>
     </div>
   );

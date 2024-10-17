@@ -2,10 +2,13 @@ import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
 import { MaxWidthWrapper } from "./MaxWidthWrapper";
 import { ArrowRightIcon } from "lucide-react";
+import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 
-const Navbar = () => {
-  const user = undefined;
-  const isAdmin = false;
+const Navbar = async () => {
+  const { getUser } = getKindeServerSession();
+  const user = await getUser();
+
+  const isAdmin = user?.email === process.env.ADMIN_EMAIL;
 
   return (
     <nav
@@ -29,10 +32,10 @@ const Navbar = () => {
                 </Link>
                 {isAdmin ? (
                   <Link
-                    href="/api/auth/logout"
+                    href="/dashboard"
                     className={buttonVariants({ variant: "ghost", size: "sm" })}
                   >
-                    Dashboard 🚀
+                    Dashboard 🐙
                   </Link>
                 ) : null}
                 <Link
@@ -55,7 +58,7 @@ const Navbar = () => {
                   Sign up
                 </Link>
                 <Link
-                  href="/configure/login"
+                  href="/api/auth/login"
                   className={buttonVariants({ variant: "ghost", size: "sm" })}
                 >
                   Sign in
