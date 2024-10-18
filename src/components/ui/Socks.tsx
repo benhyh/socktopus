@@ -2,12 +2,11 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { HTMLAttributes } from "react";
 
-interface PhoneProps extends HTMLAttributes<HTMLDivElement> {
+interface SockProps extends HTMLAttributes<HTMLDivElement> {
   imgSrc: string;
-  dark?: boolean;
 }
 
-const Phone = ({ imgSrc, className, ...props }: PhoneProps) => {
+const Socks = ({ imgSrc, className, ...props }: SockProps) => {
   return (
     <div
       className={cn(
@@ -37,4 +36,4 @@ const Phone = ({ imgSrc, className, ...props }: PhoneProps) => {
   );
 };
 
-export default Phone;
+export default Socks;
