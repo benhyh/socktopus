@@ -126,22 +126,22 @@ const ReviewCard = ({
 export function MarqueeDemoVertical() {
   return (
     <div className="relative flex w-full h-[600px] flex-row items-center justify-center overflow-hidden md:shadow-xl">
-      <Marquee pauseOnHover vertical className="[--duration:20s]">
+      <Marquee reverse pauseOnHover vertical className="[--duration:20s]">
         {firstRow.map((review) => (
           <ReviewCard key={review.username} {...review} />
         ))}
       </Marquee>
-      <Marquee reverse pauseOnHover vertical className="[--duration:20s]">
+      <Marquee pauseOnHover vertical className="[--duration:20s]">
         {secondRow.map((review) => (
           <ReviewCard key={review.username} {...review} />
         ))}
       </Marquee>
-      <Marquee pauseOnHover vertical className="[--duration:20s]">
+      <Marquee reverse pauseOnHover vertical className="[--duration:20s]">
         {thirdRow.map((review) => (
           <ReviewCard key={review.username} {...review} />
         ))}
       </Marquee>
-      <Marquee reverse pauseOnHover vertical className="[--duration:20s]">
+      <Marquee pauseOnHover vertical className="[--duration:20s]">
         {fourthRow.map((review) => (
           <ReviewCard key={review.username} {...review} />
         ))}

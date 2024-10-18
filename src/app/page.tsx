@@ -2,11 +2,14 @@
 
 import Image from "next/image";
 import { MaxWidthWrapper } from "./components/MaxWidthWrapper";
-import { BadgeCheck, Star } from "lucide-react";
+import { ArrowRight, BadgeCheck, Star } from "lucide-react";
 import Scene from "./components/Scene";
 import { Icons } from "./components/Icons";
 import { AnimatedTooltip } from "@/components/ui/AnimatedTip";
 import { MarqueeDemoVertical } from "./components/Testinomials";
+import Socks from "@/components/ui/Socks";
+import Link from "next/link";
+import { buttonVariants } from "@/components/ui/Button";
 
 export default function Home() {
   const people = [
@@ -134,6 +137,80 @@ export default function Home() {
                 <MarqueeDemoVertical />
               </div>
             </div>
+          </MaxWidthWrapper>
+        </section>
+
+        <section>
+          <MaxWidthWrapper className="py-24">
+            <div className="mb-12 px-6 lg:px-8">
+              <div className="mx-auto max-w-3xl sm:text-center">
+                <h2 className="text-purple-600 text-sm tracking-wider uppercase text-center">
+                  Showcase
+                </h2>
+                <h3 className="order-1 mt-2 tracking-tight text-center text-balance !leading-tight font-bold text-5xl md:text-6xl text-gray-900">
+                  Upload your photo and get{" "}
+                  <span className="relative px-2 py-1 bg-purple-600 text-white">
+                    your own socks
+                  </span>{" "}
+                  now
+                </h3>
+              </div>
+            </div>
+
+            <div className="mx-auto max-w-6xl px-12 lg:px-8">
+              <div className="relative flex flex-col items-center md:grid grid-cols-2 gap-40">
+                <Image
+                  src="/arrow.png"
+                  className="absolute top-[25rem] md:top-1/2 -translate-y-1/2 z-10 left-1/2 -translate-x-1/2 rotate-90 md:rotate-0"
+                  alt="arrow"
+                  width={120}
+                  height={30}
+                />
+
+                <div className="relative h-80 md:h-full w-full md:justify-self-end max-w-sm rounded-xl bg-gray-900/5 ring-inset ring-gray ring-gray-900/10 lg:rounded-2xl">
+                  <Image
+                    src="/pattern.jpg"
+                    className="rounded-md object-cover bg-white shadow-2xl ring-1 ring-gray-900/10 h-full w-full pointer-events-none"
+                    alt="horse"
+                    height={800}
+                    width={800}
+                  />
+                </div>
+                <Socks className="w-60" imgSrc="/pattern.jpg" />
+              </div>
+            </div>
+
+            <ul className="mx-auto mt-12 max-w-prose sm:text-lg space-y-2 w-fit">
+              <li className="w-fit">
+                <BadgeCheck className="h-5 w-5 text-purple-600 inline mr-1.5" />
+                Premium combed cotton for ultimate comfort
+              </li>
+              <li className="w-fit">
+                <BadgeCheck className="h-5 w-5 text-purple-600 inline mr-1.5" />
+                Reinforced heel and toe for durability
+              </li>
+              <li className="w-fit">
+                <BadgeCheck className="h-5 w-5 text-purple-600 inline mr-1.5" />
+                Moisture-wicking technology keeps feet dry
+              </li>
+              <li className="w-fit">
+                <BadgeCheck className="h-5 w-5 text-purple-600 inline mr-1.5" />
+                1-year quality guarantee
+              </li>
+
+              <div className="flex justify-center">
+                <Link
+                  className={buttonVariants({
+                    size: "lg",
+                    className: "mx-auto mt-8",
+                  })}
+                  href="/configure/upload"
+                >
+                  Create your socks now!{" "}
+                  <ArrowRight className="h-4 w-4 ml-1.5" />
+                </Link>
+              </div>
+            </ul>
           </MaxWidthWrapper>
         </section>
       </section>
