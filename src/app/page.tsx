@@ -6,6 +6,7 @@ import { BadgeCheck, Star } from "lucide-react";
 import Scene from "./components/Scene";
 import { Icons } from "./components/Icons";
 import { AnimatedTooltip } from "@/components/ui/AnimatedTip";
+import { MarqueeDemoVertical } from "./components/Testinomials";
 
 export default function Home() {
   const people = [
@@ -36,7 +37,7 @@ export default function Home() {
     {
       id: 5,
       name: "Warren Buffet",
-      designation: "McDonald's enjoyer",
+      designation: "McDonald's Advocate",
       image: "/users/buffett.png",
     },
   ];
@@ -113,17 +114,25 @@ export default function Home() {
           </div>
         </MaxWidthWrapper>
 
-        <section className="bg-slate-100 py-24">
+        <section className="bg-slate-100">
           <MaxWidthWrapper className="flex flex-col items-center gap-16 sm:gap-32">
-            <div className="flex flex-col lg:flex-row items-center gap-5 sm:gap-6">
-              <h2 className="order-1 mt-2 tracking-tight text-center text-balance !leading-tight font-bold text-5xl md:text-6xl text-gray-900">
-                What our{" "}
-                <span className="relative px-2">
-                  customers{" "}
-                  <Icons.underline className="hidden sm:block pointer-events-none absolute inset-x-0 -bottom-6 text-purple-600" />
-                </span>{" "}
-                say
-              </h2>
+            <div className="relative container mx-auto px-4 py-16">
+              <div className="items-center gap-5 sm:gap-6">
+                <h2 className="text-purple-600 text-sm tracking-wider uppercase text-center">
+                  Testimonials
+                </h2>
+                <h3 className="order-1 mt-2 tracking-tight text-center text-balance !leading-tight font-bold text-5xl md:text-6xl text-gray-900">
+                  What our{" "}
+                  <span className="relative px-2">
+                    customers{" "}
+                    <Icons.underline className="hidden sm:block pointer-events-none absolute inset-x-0 -bottom-6 text-purple-600" />
+                  </span>{" "}
+                  are saying
+                </h3>
+              </div>
+              <div className="relative mt-12 max-h-screen overflow-hidden">
+                <MarqueeDemoVertical />
+              </div>
             </div>
           </MaxWidthWrapper>
         </section>

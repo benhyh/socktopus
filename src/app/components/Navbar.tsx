@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { buttonVariants } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/Button";
 import { MaxWidthWrapper } from "./MaxWidthWrapper";
 import { ArrowRightIcon } from "lucide-react";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
@@ -18,7 +18,7 @@ const Navbar = async () => {
       <MaxWidthWrapper>
         <div className="flex h-14 items-center justify-between border-b border-zinc-200">
           <Link href="/" className="flex z-40 font-semibold">
-            Sock<span className="text-purple-600">Topus</span>
+            Sock<span className="text-purple-600">topus</span>
           </Link>
 
           <div className="h-full flex items-center space-x-4">
