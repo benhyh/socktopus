@@ -72,7 +72,7 @@ const reviews = [
   {
     name: "Diddy",
     username: "@diddy",
-    body: "Ain't no party like a Daddy party, just like these socks. Ain't no socks like these socks! #FreakOffSocks",
+    body: "Ain't no party like a Diddy party, just like these socks. Ain't no socks like these socks! #FreakOffSocks",
     img: "https://babynames.com/blogs/wp-content/uploads/2022/12/sean-combs-diddy-300x300.jpg",
   },
 ];
