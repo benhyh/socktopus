@@ -18,7 +18,7 @@ const Navbar = async () => {
       <MaxWidthWrapper>
         <div className="flex h-14 items-center justify-between border-b border-zinc-200">
           <Link href="/" className="flex z-40 font-semibold">
-            Sock<span className="text-purple-600">topus</span>
+            sock<span className="text-purple-600">topus</span>
           </Link>
 
           <div className="h-full flex items-center space-x-4">

@@ -69,7 +69,7 @@ const Page = () => {
         >
           {({ getRootProps, getInputProps }) => (
             <div
-              className="h-full w-full flex-1 flex flex-col items-center justify-center"
+              className="h-full w-full flex-1 flex flex-col items-center justify-center cursor-pointer"
               {...getRootProps()}
             >
               <input {...getInputProps()} />
