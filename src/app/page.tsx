@@ -1,12 +1,12 @@
 "use client";
 
 import Image from "next/image";
-import { MaxWidthWrapper } from "./components/MaxWidthWrapper";
+import { MaxWidthWrapper } from "./appComponents/MaxWidthWrapper";
 import { ArrowRight, BadgeCheck, Star } from "lucide-react";
-import Scene from "./components/Scene";
-import { Icons } from "./components/Icons";
+import Scene from "./appComponents/Scene";
+import { Icons } from "./appComponents/Icons";
 import { AnimatedTooltip } from "@/components/ui/AnimatedTip";
-import { MarqueeDemoVertical } from "./components/Testinomials";
+import { MarqueeDemoVertical } from "./appComponents/Testinomials";
 import Socks from "@/components/ui/Socks";
 import Link from "next/link";
 import { buttonVariants } from "@/components/ui/Button";

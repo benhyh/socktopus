@@ -19,7 +19,7 @@ const Page = () => {
     onClientUploadComplete: ([data]) => {
       const configId = data.serverData.configId;
       startTransition(() => {
-        router.push(`/config/design?id=${configId}`);
+        router.push(`/configure/design?id=${configId}`);
       });
     },
     onUploadProgress: (progress) => {
@@ -106,7 +106,9 @@ const Page = () => {
               </div>
 
               {isPending ? null : (
-                <p className="text-xs text-zinc-500">PNG, JPG, JPEG</p>
+                <p className="text-xs text-zinc-500">
+                  PNG, JPG, JPEG (4MB max)
+                </p>
               )}
             </div>
           )}
