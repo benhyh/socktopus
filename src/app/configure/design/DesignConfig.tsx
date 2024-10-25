@@ -1,7 +1,7 @@
 "use client";
 
 import { AspectRatio } from "@/components/ui/aspect-ratio";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import NextImage from "next/image";
 import { cn, formatPrice } from "@/lib/utils";
 import { Rnd } from "react-rnd";
@@ -36,12 +36,85 @@ const DesignConfig = ({
     material: MATERIALS.options[0],
   });
 
+  const [renderedDimension, setRenderedDimension] = useState({
+    width: imageDimensions.width / 4,
+    height: imageDimensions.height / 4,
+  });
+
+  const [renderedPosition, setRenderedPosition] = useState({
+    x: 220,
+    y: 210,
+  });
+
+  const sockRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  async function saveConfig() {
+    try {
+      const {
+        left: sockLeft,
+        top: sockTop,
+        width,
+        height,
+      } = sockRef.current!.getBoundingClientRect();
+
+      const { left: containerLeft, top: containerTop } =
+        containerRef.current!.getBoundingClientRect();
+
+      const leftOffset = sockLeft - containerLeft;
+      const topOffset = sockTop - containerTop;
+
+      const actualX = renderedPosition.x - leftOffset;
+      const actualY = renderedPosition.y - topOffset;
+
+      const canvas = document.createElement("canvas");
+      canvas.width = imageDimensions.width;
+      canvas.height = imageDimensions.height;
+      const context = canvas.getContext("2d");
+
+      const userImage = new Image();
+      userImage.crossOrigin = "anonymous";
+      userImage.src = imageUrl;
+      await new Promise((resolve) => (userImage.onload = resolve));
+
+      context?.drawImage(
+        userImage,
+        actualX,
+        actualY,
+        renderedDimension.width,
+        renderedDimension.height
+      );
+
+      const base64 = canvas.toDataURL();
+      const base64data = base64.split(",")[1];
+
+      const blob = base64toBlob(base64data, "image/png");
+      const file = new File([blob], "design.png", { type: "image/png" });
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  function base64toBlob(base64: string, mimeType: string) {
+    const byteString = atob(base64);
+    const byteNumbers = new Array(byteString.length);
+    for (let i = 0; i < byteString.length; i++) {
+      byteNumbers[i] = byteString.charCodeAt(i);
+    }
+    const byteArray = new Uint8Array(byteNumbers);
+    return new Blob([byteArray], { type: mimeType });
+  }
+
   return (
-    <div className="relative mt-20 grid grid-cols-3 mb-20 pb-20">
-      <div className="relative h-[31.5rem] overflow-hidden col-span-2 w-full max-w-4xl flex items-center justify-center rounded-lg border-2 border-dashed border-gray-300 p-12 text-center focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2">
+    <div className="relative mt-20 grid grid-cols-1 lg:grid-cols-3 mb-20 pb-20">
+      <div
+        ref={containerRef}
+        className="relative h-[31.5rem] overflow-hidden col-span-2 w-full max-w-4xl flex items-center justify-center rounded-lg border-2 border-dashed border-gray-300 p-12 text-center focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+      >
         <div className="relative w-60 bg-opacity-50 pointer-events-none aspect-[403/619]">
           <AspectRatio
             ratio={403 / 619}
+            ref={sockRef}
             className="pointer-events-none relative z-50 aspect-ratio-[403/619] w-full"
           >
             <NextImage
@@ -66,6 +139,17 @@ const DesignConfig = ({
             width: imageDimensions.width / 4,
             height: imageDimensions.height / 4,
           }}
+          onResizeStop={(_, __, ref, ___, { x, y }) => {
+            setRenderedDimension({
+              width: parseInt(ref.style.width.slice(0, -2)),
+              height: parseInt(ref.style.height.slice(0, -2)),
+            });
+            setRenderedPosition({ x, y });
+          }}
+          onDragStop={(_, data) => {
+            const { x, y } = data;
+            setRenderedPosition({ x, y });
+          }}
           lockAspectRatio
           resizeHandleComponent={{
             bottomLeft: <HandleComponent />,
@@ -86,7 +170,7 @@ const DesignConfig = ({
         </Rnd>
       </div>
 
-      <div className="h-[30rem] flex flex-col bg-white">
+      <div className="h-[30rem] w-full col-span-full lg:col-span- flex flex-col bg-white">
         <ScrollArea className="relative flex-1">
           <div className="absolute z-10 inset-x-0 bottom-0 bg-gradient-to-t from-white pointer-events-none" />
 
@@ -213,7 +297,7 @@ const DesignConfig = ({
               <p className="font-medium whitespace-nowrap">
                 {formatPrice((BASE_PRICE + options.material.price) / 100)}
               </p>
-              <Button>
+              <Button onClick={() => saveConfig()}>
                 Continue
                 <ArrowRight className="h-4 w-4 ml-1.5 inline" />
               </Button>
