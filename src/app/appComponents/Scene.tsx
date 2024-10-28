@@ -1,3 +1,5 @@
+// i just want to keep my github streak ngl
+
 import React, { Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
