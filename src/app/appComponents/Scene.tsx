@@ -1,5 +1,6 @@
 // i just want to keep my github streak ngl
 // shameless github streak
+// no one will ever see this
 
 import React, { Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
