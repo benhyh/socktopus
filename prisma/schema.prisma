@@ -7,10 +7,34 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum OrderStatus {
+  fulfilled
+  shipped
+  awaiting_shipment
+  awaiting_payment
+}
+
+enum SockMaterial {
+  cotton
+  polyester
+  wool
+}
+
+enum colors {
+  black
+  white
+  gray
+  red
+  blue
+  purple
+}
+
 model Configuration {
   id    String @id @default(cuid())
   width Int
   height Int
+  color colors?
   imageUrl String
+  material SockMaterial?
   croppedImageUrl String?
 }

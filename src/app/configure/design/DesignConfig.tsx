@@ -13,6 +13,8 @@ import { Label } from "@/components/ui/label";
 import { BASE_PRICE } from "@/app/config/products";
 import { Button } from "@/components/ui/Button";
 import { ArrowRight } from "lucide-react";
+import { useUploadThing } from "@/lib/uploadthing";
+import { useToast } from "@/hooks/use-toast";
 
 interface DesignConfigProps {
   configId: string;
@@ -28,6 +30,7 @@ const DesignConfig = ({
   imageUrl,
   imageDimensions,
 }: DesignConfigProps) => {
+  const { toast } = useToast();
   const [options, setOptions] = useState<{
     color: (typeof COLORS)[number];
     material: (typeof MATERIALS.options)[number];
@@ -48,6 +51,8 @@ const DesignConfig = ({
 
   const sockRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+
+  const { startUpload } = useUploadThing("imageUploader");
 
   async function saveConfig() {
     try {
@@ -90,8 +95,15 @@ const DesignConfig = ({
 
       const blob = base64toBlob(base64data, "image/png");
       const file = new File([blob], "design.png", { type: "image/png" });
+
+      await startUpload([file], { configId });
     } catch (error) {
       console.error(error);
+      toast({
+        title: "Error",
+        description: "Failed to save design. Please try again.",
+        variant: "destructive",
+      });
     }
   }
 
