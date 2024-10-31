@@ -253,75 +253,141 @@ const DesignConfig = ({
                 </div>
               </RadioGroup>
               <div className="mt-4" />
-              {[MATERIALS, SIZES].map(
-                ({ name, options: selectableOptions }) => (
-                  <RadioGroup
-                    key={name}
-                    value={options[name]}
-                    onChange={(val) => {
-                      setOptions((prev) => ({
-                        ...prev,
-                        [name]: val,
-                      }));
-                    }}
-                  >
-                    <Label>
-                      {name.slice(0, 1).toUpperCase() + name.slice(1)}
-                    </Label>
-                    <div className="mt-3 space-y-4">
-                      {selectableOptions.map((option) => (
-                        <Radio
-                          key={option.value}
-                          value={option}
-                          className={({ checked }) =>
-                            cn(
-                              "relative block cursor-pointer rounded-lg bg-white px-6 py-4 shadow-sm border-2 border-zinc-200 focus:outline-none ring-0 focus:ring-0 outline-none sm:flex sm:justify-between",
-                              {
-                                "border-primary": checked,
-                              }
-                            )
-                          }
-                        >
-                          <span className="flex items-center">
-                            <span className="flex flex-col text-sm">
-                              <Radio
-                                value={option}
-                                className="font-medium text-gray-900"
-                              >
-                                {option.label}
-                              </Radio>
+              {[MATERIALS].map(({ name, options: selectableOptions }) => (
+                <RadioGroup
+                  key={name}
+                  value={options[name]}
+                  onChange={(val) => {
+                    setOptions((prev) => ({
+                      ...prev,
+                      [name]: val,
+                    }));
+                  }}
+                >
+                  <Label>
+                    {name.slice(0, 1).toUpperCase() + name.slice(1)}
+                  </Label>
+                  <div className="mt-3 space-y-4">
+                    {selectableOptions.map((option) => (
+                      <Radio
+                        key={option.value}
+                        value={option}
+                        className={({ checked }) =>
+                          cn(
+                            "relative block cursor-pointer rounded-lg bg-white px-6 py-4 shadow-sm border-2 border-zinc-200 focus:outline-none ring-0 focus:ring-0 outline-none sm:flex sm:justify-between",
+                            {
+                              "border-primary": checked,
+                            }
+                          )
+                        }
+                      >
+                        <span className="flex items-center">
+                          <span className="flex flex-col text-sm">
+                            <Radio
+                              value={option}
+                              className="font-medium text-gray-900"
+                            >
+                              {option.label}
+                            </Radio>
 
-                              {option.description ? (
-                                <>
-                                  <Radio
-                                    value={option}
-                                    as="span"
-                                    className="text-gray-500"
-                                  >
-                                    <span className="block sm:inline">
-                                      {option.description}
-                                    </span>
-                                  </Radio>
-                                </>
-                              ) : null}
-                            </span>
+                            {option.description ? (
+                              <>
+                                <Radio
+                                  value={option}
+                                  as="span"
+                                  className="text-gray-500"
+                                >
+                                  <span className="block sm:inline">
+                                    {option.description}
+                                  </span>
+                                </Radio>
+                              </>
+                            ) : null}
                           </span>
+                        </span>
 
-                          <Radio
-                            as="span"
-                            value={option}
-                            className="mt-2 flex text-sm sm:ml-4 sm:mt-0 sm:flex-col sm:text-right"
-                          >
-                            <span className="font-medium text-gray-900">
-                              {formatPrice(option.price / 100)}
-                            </span>
-                          </Radio>
+                        <Radio
+                          as="span"
+                          value={option}
+                          className="mt-2 flex text-sm sm:ml-4 sm:mt-0 sm:flex-col sm:text-right"
+                        >
+                          <span className="font-medium text-gray-900">
+                            {formatPrice(option.price / 100)}
+                          </span>
                         </Radio>
-                      ))}
-                    </div>
-                  </RadioGroup>
-                )
-              )}
+                      </Radio>
+                    ))}
+                  </div>
+                </RadioGroup>
+              ))}
+              <div className="mt-4" />
+              {[SIZES].map(({ name, options: selectableOptions }) => (
+                <RadioGroup
+                  key={name}
+                  value={options[name]}
+                  onChange={(val) => {
+                    setOptions((prev) => ({
+                      ...prev,
+                      [name]: val,
+                    }));
+                  }}
+                >
+                  <Label>
+                    {name.slice(0, 1).toUpperCase() + name.slice(1)}
+                  </Label>
+                  <div className="mt-3 space-y-4">
+                    {selectableOptions.map((option) => (
+                      <Radio
+                        key={option.value}
+                        value={option}
+                        className={({ checked }) =>
+                          cn(
+                            "relative block cursor-pointer rounded-lg bg-white px-6 py-4 shadow-sm border-2 border-zinc-200 focus:outline-none ring-0 focus:ring-0 outline-none sm:flex sm:justify-between",
+                            {
+                              "border-primary": checked,
+                            }
+                          )
+                        }
+                      >
+                        <span className="flex items-center">
+                          <span className="flex flex-col text-sm">
+                            <Radio
+                              value={option}
+                              className="font-medium text-gray-900"
+                            >
+                              {option.label}
+                            </Radio>
+
+                            {option.description ? (
+                              <>
+                                <Radio
+                                  value={option}
+                                  as="span"
+                                  className="text-gray-500"
+                                >
+                                  <span className="block sm:inline">
+                                    {option.description}
+                                  </span>
+                                </Radio>
+                              </>
+                            ) : null}
+                          </span>
+                        </span>
+
+                        <Radio
+                          as="span"
+                          value={option}
+                          className="mt-2 flex text-sm sm:ml-4 sm:mt-0 sm:flex-col sm:text-right"
+                        >
+                          <span className="font-medium text-gray-900">
+                            {formatPrice(option.price / 100)}
+                          </span>
+                        </Radio>
+                      </Radio>
+                    ))}
+                  </div>
+                </RadioGroup>
+              ))}
             </div>
           </div>
         </ScrollArea>
