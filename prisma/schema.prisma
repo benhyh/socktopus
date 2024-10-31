@@ -14,7 +14,7 @@ enum OrderStatus {
   awaiting_payment
 }
 
-enum SockMaterial {
+enum materials {
   cotton
   polyester
   wool
@@ -29,12 +29,21 @@ enum colors {
   purple
 }
 
+enum sizes {
+  xs
+  small
+  medium
+  large
+  xl
+}
+
 model Configuration {
   id    String @id @default(cuid())
   width Int
   height Int
   color colors?
+  size sizes?
   imageUrl String
-  material SockMaterial?
+  material materials?
   croppedImageUrl String?
 }

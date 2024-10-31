@@ -15,6 +15,9 @@ import { Button } from "@/components/ui/Button";
 import { ArrowRight } from "lucide-react";
 import { useUploadThing } from "@/lib/uploadthing";
 import { useToast } from "@/hooks/use-toast";
+import { useMutation } from "@tanstack/react-query";
+import { saveConfig as _saveConfig, SaveConfigArgs } from "./actions";
+import { useRouter } from "next/navigation";
 
 interface DesignConfigProps {
   configId: string;
@@ -31,12 +34,33 @@ const DesignConfig = ({
   imageDimensions,
 }: DesignConfigProps) => {
   const { toast } = useToast();
+  const router = useRouter();
+
+  const { mutate: saveConfiguration } = useMutation({
+    mutationKey: ["save-config"],
+    mutationFn: async (args: SaveConfigArgs) => {
+      await Promise.all([saveConfig(), _saveConfig(args)]);
+    },
+    onError: () => {
+      toast({
+        title: "Error",
+        description: "Failed to save design. Please try again.",
+        variant: "destructive",
+      });
+    },
+    onSuccess: () => {
+      router.push(`/configure/preview?id=${configId}`);
+    },
+  });
+
   const [options, setOptions] = useState<{
     color: (typeof COLORS)[number];
     material: (typeof MATERIALS.options)[number];
+    size: (typeof SIZES.options)[number];
   }>({
     color: COLORS[0],
     material: MATERIALS.options[0],
+    size: SIZES.options[0],
   });
 
   const [renderedDimension, setRenderedDimension] = useState({
@@ -309,7 +333,16 @@ const DesignConfig = ({
               <p className="font-medium whitespace-nowrap">
                 {formatPrice((BASE_PRICE + options.material.price) / 100)}
               </p>
-              <Button onClick={() => saveConfig()}>
+              <Button
+                onClick={() =>
+                  saveConfiguration({
+                    configId,
+                    color: options.color.value,
+                    material: options.material.value,
+                    size: options.size.value,
+                  })
+                }
+              >
                 Continue
                 <ArrowRight className="h-4 w-4 ml-1.5 inline" />
               </Button>
