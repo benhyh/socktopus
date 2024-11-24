@@ -73,10 +73,15 @@ const config: Config = {
             transform: "translateY(calc(-100% - var(--gap)))",
           },
         },
+        flashing: {
+          "0%, 100%": { opacity: "0.2" },
+          "20%": { opacity: "1" },
+        },
       },
       animation: {
         marquee: "marquee var(--duration) infinite linear",
         "marquee-vertical": "marquee-vertical var(--duration) linear infinite",
+        flashing: "flashing 1.4s infinite linear",
       },
     },
   },

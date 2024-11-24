@@ -1,11 +1,12 @@
 "use client";
 
 import { BASE_PRICE, PRODUCT_PRICES } from "@/app/config/products";
+import { Button } from "@/components/ui/Button";
 import Socks from "@/components/ui/Socks";
 import { cn, formatPrice } from "@/lib/utils";
 import { COLORS, MATERIALS, SIZES } from "@/validators/option-validator";
-import { Button } from "@headlessui/react";
 import { Configuration } from "@prisma/client";
+import { useMutation } from "@tanstack/react-query";
 import { ArrowRight } from "lucide-react";
 import { useEffect, useState } from "react";
 import Confetti from "react-dom-confetti";
@@ -29,6 +30,11 @@ const DesignPreview = ({ configuration }: { configuration: Configuration }) => {
   let totalPrice = BASE_PRICE;
   if (material === "polyester") totalPrice += PRODUCT_PRICES.material.polyester;
   if (material === "wool") totalPrice += PRODUCT_PRICES.material.wool;
+
+  const {} = useMutation({
+    mutationKey: ["get-checkout-session"],
+    // mutationFn:
+  });
 
   return (
     <>
@@ -113,7 +119,12 @@ const DesignPreview = ({ configuration }: { configuration: Configuration }) => {
             </div>
 
             <div className="mt-8 flex justify-end pb-12">
-              <Button className="px-4 sm:px-6 lg:px-8">
+              <Button
+                disabled={false}
+                isLoading={true}
+                loadingText="Loading"
+                className="px-4 sm:px-6 lg:px-8"
+              >
                 Check out <ArrowRight className="h-4 w-4 ml-1.5 inline" />
               </Button>
             </div>
