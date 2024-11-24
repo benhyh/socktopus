@@ -3,6 +3,7 @@
 import { BASE_PRICE, PRODUCT_PRICES } from "@/app/config/products";
 import { db } from "@/db";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
+import { OrderDetails } from "@prisma/client";
 
 export const createCheckoutSession = async ({
   configId,
@@ -32,4 +33,25 @@ export const createCheckoutSession = async ({
   if (material === "cotton") price += PRODUCT_PRICES.material.cotton;
   if (material === "polyester") price += PRODUCT_PRICES.material.polyester;
   if (material === "wool") price += PRODUCT_PRICES.material.wool;
+
+  let order: OrderDetails | undefined = undefined;
+
+  const existingOrder = await db.orderDetails.findFirst({
+    where: {
+      userId: user.id,
+      configurationId: config.id,
+    },
+  });
+
+  if (existingOrder) {
+    order = existingOrder;
+  } else {
+    await db.orderDetails.create({
+      data: {
+        amount: price / 100,
+        userId: user.id,
+        configurationId: config.id,
+      },
+    });
+  }
 };
