@@ -82,6 +82,7 @@ model BillingAddress {
   phoneNumber String?
   postalCode  String
   state       String?
+  country     String
   order       OrderDetails[]
 }
 
@@ -93,5 +94,6 @@ model ShippingAddress {
   phoneNumber String?
   postalCode  String
   state       String?
+  country     String
   order       OrderDetails[]
 }

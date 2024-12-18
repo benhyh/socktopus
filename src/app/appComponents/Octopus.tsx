@@ -33,7 +33,9 @@ type GLTFResult = GLTF & {
 type ModelProps = JSX.IntrinsicElements["group"];
 
 export default function Octopus(props: ModelProps) {
-  const { nodes, materials } = useGLTF("/model/octopus.gltf") as GLTFResult;
+  const { nodes, materials } = useGLTF(
+    "/model/octopus.gltf"
+  ) as unknown as GLTFResult;
   return (
     <group {...props} dispose={null}>
       <mesh
