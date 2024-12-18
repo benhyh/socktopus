@@ -9,7 +9,7 @@ import { AnimatedTooltip } from "@/components/ui/AnimatedTip";
 import { MarqueeDemoVertical } from "./appComponents/Testinomials";
 import Socks from "@/components/ui/Socks";
 import Link from "next/link";
-import { buttonVariants } from "@/components/ui/Button";
+import { buttonVariants } from "@/components/ui/button";
 
 export default function Home() {
   const people = [

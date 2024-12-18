@@ -1,7 +1,7 @@
 "use client";
 
 import { BASE_PRICE, PRODUCT_PRICES } from "@/app/config/products";
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/ui/button";
 import Socks from "@/components/ui/Socks";
 import { cn, formatPrice } from "@/lib/utils";
 import { COLORS, MATERIALS, SIZES } from "@/validators/option-validator";

@@ -3,7 +3,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "./ui/dialog";
 import Image from "next/image";
 import { DialogDescription } from "@radix-ui/react-dialog";
 import { LoginLink, RegisterLink } from "@kinde-oss/kinde-auth-nextjs";
-import { buttonVariants } from "./ui/Button";
+import { buttonVariants } from "./ui/button";
 
 const LoginModal = ({
   isOpen,

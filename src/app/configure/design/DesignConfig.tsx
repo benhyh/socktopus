@@ -11,7 +11,7 @@ import { Radio, RadioGroup } from "@headlessui/react";
 import { COLORS, MATERIALS, SIZES } from "@/validators/option-validator";
 import { Label } from "@/components/ui/label";
 import { BASE_PRICE } from "@/app/config/products";
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { useUploadThing } from "@/lib/uploadthing";
 import { useToast } from "@/hooks/use-toast";
