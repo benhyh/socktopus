@@ -47,7 +47,7 @@ export const createCheckoutSession = async ({
   if (existingOrder) {
     order = existingOrder;
   } else {
-    await db.orderDetails.create({
+    order = await db.orderDetails.create({
       data: {
         amount: price / 100,
         userId: user.id,
@@ -66,7 +66,7 @@ export const createCheckoutSession = async ({
   });
 
   const stripeSession = await stripe.checkout.sessions.create({
-    success_url: `${process.env.NEXT_PUBLIC_SERVER_URL}/thank-you?orderId=${order?.id}`,
+    success_url: `${process.env.NEXT_PUBLIC_SERVER_URL}/thank-you?orderId=${order.id}`,
     cancel_url: `${process.env.NEXT_PUBLIC_SERVER_URL}/configure/preview?id=${config.id}`,
     payment_method_types: ["card"],
     mode: "payment",
