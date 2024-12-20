@@ -5,7 +5,7 @@ import React, { useRef, useState } from "react";
 import NextImage from "next/image";
 import { cn, formatPrice } from "@/lib/utils";
 import { Rnd } from "react-rnd";
-import HandleComponent from "@/app/appComponents/HandleComponent";
+import HandleComponent from "@/components/HandleComponent";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Radio, RadioGroup } from "@headlessui/react";
 import { COLORS, MATERIALS, SIZES } from "@/validators/option-validator";

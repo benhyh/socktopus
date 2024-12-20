@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Navbar from "./appComponents/Navbar";
+import Navbar from "../components/Navbar";
 import Footer from "@/components/ui/Footer";
 import { Toaster } from "@/components/ui/toaster";
-import Providers from "./appComponents/Providers";
+import Providers from "../components/Providers";
 
 export const metadata: Metadata = {
   title: "Socktopus",

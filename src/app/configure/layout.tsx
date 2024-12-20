@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react";
-import { MaxWidthWrapper } from "../appComponents/MaxWidthWrapper";
-import Steps from "../appComponents/Steps";
+import { MaxWidthWrapper } from "../../components/MaxWidthWrapper";
+import Steps from "../../components/Steps";
 
 const Layout = ({ children }: { children: ReactNode }) => {
   return (
