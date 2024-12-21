@@ -1,14 +1,11 @@
-import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "../components/Navbar";
 import Footer from "@/components/ui/Footer";
 import { Toaster } from "@/components/ui/toaster";
 import Providers from "../components/Providers";
+import { constructMetadata } from "@/lib/utils";
 
-export const metadata: Metadata = {
-  title: "Socktopus",
-  description: "Brought to you by @benhyh",
-};
+export const metadata = constructMetadata();
 
 export default function RootLayout({
   children,
