@@ -6,7 +6,7 @@ import { useUploadThing } from "@/lib/uploadthing";
 import { cn } from "@/lib/utils";
 import { Image, Loader2, MousePointerSquareDashed } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { startTransition, useState, useTransition } from "react";
+import { useState, useTransition } from "react";
 import Dropzone, { FileRejection } from "react-dropzone";
 
 const Page = () => {
@@ -17,6 +17,7 @@ const Page = () => {
 
   const { startUpload, isUploading } = useUploadThing("imageUploader", {
     onClientUploadComplete: ([data]) => {
+      console.log("Upload completed: ", data);
       const configId = data.serverData.configId;
       startTransition(() => {
         router.push(`/configure/design?id=${configId}`);
@@ -39,8 +40,7 @@ const Page = () => {
     });
   };
   const onDropAccepted = (acceptedFiles: File[]) => {
-    startUpload(acceptedFiles, { configId: undefined });
-
+    const result = startUpload(acceptedFiles, { configId: undefined });
     setIsDragOver(false);
   };
 
