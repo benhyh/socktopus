@@ -60,13 +60,24 @@ const DesignPreview = ({ configuration }: { configuration: Configuration }) => {
     },
   });
 
-  const handleCheckout = () => {
+  /**
+   *   const handleCheckout = () => {
     if (user) {
       createPaymentSession({ configId: id });
     } else {
       localStorage.setItem("configurationId", id);
       setIsLoginModalOpen(true);
     }
+  };
+   */
+
+  const handleCheckout = () => {
+    if (!user || !user.id) {
+      localStorage.setItem("configurationId", id);
+      setIsLoginModalOpen(true);
+      return;
+    }
+    createPaymentSession({ configId: id });
   };
 
   return (
